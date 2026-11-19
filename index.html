@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case File: Ash Mateo Umali 🌷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffe3ec;--bg2:#ffc9dd;--ink:#4a1030;--pink:#ff4f93;--deep:#c2185b;--card:#fff8fb;--leaf:#3e9b6b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a0a1c;--bg2:#4a1232;--ink:#ffe3ee;--card:#3a1228;--deep:#ff8fbd}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at 20% 10%,var(--bg2),var(--bg) 60%);overflow:hidden;display:grid;place-items:center}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,8vw,3.8rem)}
+h2{font-size:clamp(1.7rem,6vw,2.6rem)}
+em{font-style:italic;color:var(--deep)}
+p{line-height:1.55;font-size:1.05rem;max-width:34ch;margin-inline:auto}
+.stage{position:relative;width:min(92vw,560px);min-height:min(80vh,620px);display:grid;place-items:center;text-align:center;z-index:2}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;padding:1.5rem;opacity:0;pointer-events:none;transform:translateY(24px) scale(.96);transition:opacity .6s,transform .6s}
+.scene.on{opacity:1;pointer-events:auto;transform:none}
+.btn{font:600 1.05rem 'DM Sans',sans-serif;border:0;border-radius:999px;padding:.95rem 1.8rem;background:var(--pink);color:#fff;cursor:pointer;box-shadow:0 6px 0 var(--deep);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--deep)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn.alt{background:var(--card);color:var(--ink);box-shadow:0 6px 0 var(--bg2);border:2px solid var(--bg2)}
+.row{display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;min-height:4.5rem}
+.tag{display:inline-block;background:var(--card);border:2px dashed var(--pink);border-radius:12px;padding:.35rem .8rem;font-size:.9rem;transform:rotate(-2deg)}
+.bar{width:min(80%,300px);height:18px;border-radius:99px;background:var(--card);border:2px solid var(--pink);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--pink) 0 10px,#ff7fb0 10px 20px);transition:width .4s}
+#msg{font-size:.95rem;min-height:1.5em}
+.garden{display:flex;align-items:flex-end;justify-content:center;height:190px;gap:2px}
+.tulip{width:46px;height:170px;transform-origin:bottom;transform:scaleY(0);animation:grow 1.4s cubic-bezier(.3,1.4,.5,1) forwards,sway 4s ease-in-out infinite alternate}
+@keyframes grow{to{transform:scaleY(1)}}
+@keyframes sway{from{rotate:-3deg}to{rotate:3deg}}
+.facts{display:grid;gap:.7rem;width:100%}
+.fact{background:var(--card);border-radius:18px;padding:.9rem 1rem;border:2px solid var(--bg2);cursor:pointer;font:inherit;color:inherit;text-align:left;transition:transform .2s}
+.fact:hover{transform:rotate(-1deg) scale(1.02)}
+.fact b{display:block;font-family:'Fraunces',serif;font-size:1.1rem}
+.fact span{display:none;font-size:.95rem;margin-top:.2rem}
+.fact.open span{display:block;animation:pop .4s}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+#no{transition:left .25s,top .25s}
+.cup{font-size:4.5rem;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(6deg)}}
+.fall{position:fixed;top:-10vh;z-index:1;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+.float{position:fixed;bottom:-40px;z-index:1;pointer-events:none;opacity:.5;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) rotate(40deg)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<main class="stage">
+
+<section class="scene on" id="s0">
+  <span class="tag">🔎 Confidential case file</span>
+  <h1>Hi, <em id="name"></em> 🌷</h1>
+  <p>Subject: <b id="full"></b>. Future criminologist, current suspect in a very sweet case. Please cooperate.</p>
+  <p><b>☀️ Good morning, Ash!</b> Don’t skip breakfast. Every good detective needs energy.</p>
+  <button class="btn" data-go="1">Open the case file</button>
+</section>
+
+<section class="scene" id="s1">
+  <h2>Gathering <em>evidence</em>…</h2>
+  <div class="bar"><i id="fill"></i></div>
+  <p id="msg">Warming up the tulips</p>
+</section>
+
+<section class="scene" id="s2">
+  <h2>Crime scene: <em>a field of pink tulips</em></h2>
+  <div class="garden" id="garden"></div>
+  <p>Investigators found no fingerprints. Only flowers, planted by someone with a crush.</p>
+  <button class="btn" data-go="3" id="toFacts">Show me the evidence</button>
+</section>
+
+<section class="scene" id="s3">
+  <h2>Three pieces of <em>evidence</em></h2>
+  <div class="facts">
+    <button class="fact"><b>Exhibit A: The Motive (tap)</b><span>You turn an ordinary day into a good one, and that’s the reason behind this whole page.</span></button>
+    <button class="fact"><b>Exhibit B: The Witness (tap)</b><span>I saw it with my own eyes: you smile, and everyone nearby is suddenly in a better mood.</span></button>
+    <button class="fact"><b>Exhibit C: The Confession (tap)</b><span>I got nervous building this page, and I’d do it all again. Even a future criminologist can’t say I’m lying.</span></button>
+  </div>
+  <button class="btn" data-go="4">Proceed to the hearing</button>
+</section>
+
+<section class="scene" id="s4">
+  <div class="cup">☕</div>
+  <h2>Ash, will you go on a <em>coffee date</em> with me?</h2>
+  <p id="hint">The court advises you to answer carefully. Or just answer yes.</p>
+  <div class="row" id="row">
+    <button class="btn" id="yes">Yes 💗</button>
+    <button class="btn alt" id="no">No</button>
+  </div>
+</section>
+
+<section class="scene" id="s5">
+  <div class="cup">☕💗</div>
+  <span class="tag" style="border-color:var(--deep);color:var(--deep);font-weight:600;transform:rotate(-6deg)">CASE CLOSED</span>
+  <h1>Verdict: <em>yes</em> 💗</h1>
+  <p>Sentence: one coffee date, no parole. Screenshot this and send it to me as your official statement.</p>
+  <p>P.S. Have breakfast first. 🍳 Coffee is not a meal.</p>
+</section>
+
+</main>
+
+<script>
+// ✏️ EDIT THESE TWO LINES
+const HER_NAME = "Ash Mateo Umali";
+const NICKNAME = "Ash";
+
+document.getElementById('name').textContent = NICKNAME;
+document.getElementById('full').textContent = HER_NAME;
+const $ = s => document.querySelector(s);
+const scenes = [...document.querySelectorAll('.scene')];
+function go(n){
+  scenes.forEach((s,i)=>s.classList.toggle('on',i===n));
+  if(n===1) load();
+  if(n===2) plant();
+}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+document.querySelectorAll('.fact').forEach(f=>f.onclick=()=>f.classList.toggle('open'));
+
+// Loading scene
+function load(){
+  const lines=['Dusting for fingerprints','Interviewing the tulips','Reviewing CCTV of you being cute','Hiding the nervousness','Almost there, detective'];
+  let p=0,i=0;
+  const t=setInterval(()=>{
+    p+=Math.random()*18+6;
+    if(p>=100){p=100;clearInterval(t);$('#msg').textContent='Evidence secured. Guilty of being adorable.';setTimeout(()=>go(2),900)}
+    else{$('#msg').textContent=lines[i++%lines.length]}
+    $('#fill').style.width=p+'%';
+  },700);
+}
+
+// Tulips
+function tulip(h,d){
+  const c=['#ff4f93','#ff7fb0','#f43f85','#ff9ec6','#e91e78'][Math.floor(Math.random()*5)];
+  return `<svg class="tulip" style="animation-delay:${d}s,${d+1.4}s;height:${h}px" viewBox="0 0 46 170" aria-hidden="true">
+  <path d="M23 170 C22 130 24 100 23 62" stroke="#3e9b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M23 150 C8 140 4 118 8 100 C20 112 24 130 23 150Z" fill="#4fb582"/>
+  <path d="M23 135 C38 128 42 110 38 94 C27 104 22 118 23 135Z" fill="#3e9b6b"/>
+  <path d="M8 22 C8 50 16 64 23 64 C30 64 38 50 38 22 L30 32 L23 14 L16 32Z" fill="${c}"/>
+  <path d="M23 14 L30 32 L38 22 C38 40 34 52 28 58 C32 44 30 28 23 14Z" fill="#000" opacity=".1"/></svg>`;
+}
+let planted=false;
+function plant(){
+  if(planted)return;planted=true;
+  $('#garden').innerHTML=[120,160,135,175,125,150,115].map((h,i)=>tulip(h,i*.25)).join('');
+}
+
+// Rain of emoji
+function rain(list,n,cls,dur){
+  for(let i=0;i<n;i++){
+    const e=document.createElement('div');
+    e.className=cls;e.textContent=list[Math.floor(Math.random()*list.length)];
+    e.style.left=Math.random()*100+'vw';
+    e.style.fontSize=(18+Math.random()*26)+'px';
+    e.style.animationDuration=(dur+Math.random()*dur)+'s';
+    e.style.animationDelay=(Math.random()*(cls==='fall'?1.5:dur))+'s';
+    document.body.appendChild(e);
+    if(cls==='fall')setTimeout(()=>e.remove(),(dur*2+2)*1000);
+  }
+}
+rain(['🌷','💗','🌸','✨'],14,'float',9);
+
+// The question
+const noLines=['No','Objection!','Think again 🥺','Pretty please?','The coffee will be sad','Overruled!','Too slow, detective 😌','You can’t catch me','Just press yes 💗'];
+let tries=0;
+const no=$('#no'),yes=$('#yes');
+function dodge(e){
+  if(e&&e.cancelable)e.preventDefault();
+  tries++;
+  no.textContent=noLines[Math.min(tries,noLines.length-1)];
+  const k=Math.min(tries,6);
+  yes.style.transform=`scale(${1+k*.15})`;
+  yes.style.margin=`0 ${k*8}px`;
+  no.style.position='fixed';
+  const m=16,w=no.offsetWidth,h=no.offsetHeight;
+  no.style.left=m+Math.random()*(innerWidth-w-2*m)+'px';
+  no.style.top=m+Math.random()*(innerHeight-h-2*m)+'px';
+  no.style.zIndex=5;
+  if(tries>=4)$('#hint').textContent='The suspect keeps escaping. Only one button can be caught.';
+}
+no.addEventListener('pointerenter',dodge);
+no.addEventListener('touchstart',dodge,{passive:false});
+document.addEventListener('pointermove',e=>{
+  if(!scenes[4].classList.contains('on'))return;
+  const r=no.getBoundingClientRect();
+  const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height/2));
+  if(d<110)dodge();
+});
+no.addEventListener('pointerdown',dodge);
+no.addEventListener('click',dodge);
+yes.onclick=()=>{
+  no.style.display='none';
+  go(5);
+  rain(['🌷','💗','☕','🌸','💖','✨'],60,'fall',3.5);
+  setTimeout(()=>rain(['🌷','💗','☕'],30,'fall',3.5),2500);
+};
+</script>
+</body>
+</html>
